@@ -79,3 +79,8 @@ fetch("http://localhost:5678/api/users/login")
 				<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
 				<figcaption>Hotel First Arte - New Delhi</figcaption>
 			</figure>
+			var myInit = {
+	method: "GET",
+	headers: { 
+	'Accept': 'application/json', 
+	}};
