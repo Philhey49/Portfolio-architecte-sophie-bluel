@@ -15,6 +15,7 @@ fetch('http://localhost:5678/api/works')
 		let img = document.createElement('img');
 		let figcaption = document.createElement('figcaption');
 		img.src = project.imageUrl;
+		img.setAttribute("crossorigin", "anonymous");
 		img.alt = project.title;
 		figcaption.innerHTML = `${project.title}`;
 		gallery.appendChild(figure);
