@@ -6,10 +6,18 @@ fetch('http://localhost:5678/api/categories')
 	return res.json();
 	}
 })
-    const categoryId = new Set([
-        ["id:", 1, 2, 3],
-        ["name:", "Objets", "Appartements", "Hotels & restaurants"],
-    ]);
-
+    .then(function(choices) 
+    {
+        choices.forEach(choice => 
+        {
+            const categories = document.getElementById('choices');
+            let button = document.createElement('button');
+            let a = document.createElement('a');
+            button.id = `${choice.id}`; 
+            a.innerHTML = `${choice.name}`;
+            categories.appendChild(button); 
+            button.appendChild(a);
+        });  
+    });
 
     
