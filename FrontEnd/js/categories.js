@@ -8,13 +8,16 @@ fetch('http://localhost:5678/api/categories')
 })
     .then(function(choices) 
     {
-        choices.forEach(choice => 
+        const categories = document.getElementById('choices');
+        const monSet = new Set();
+        let all = "Tous";
+        monSet.add(all).add(choices[0].name,).add(choices[1].name,).add(choices[2].name);
+        monSet.forEach(title => 
         {
-            const categories = document.getElementById('choices');
             let button = document.createElement('button');
             let a = document.createElement('a');
-            button.id = `${choice.id}`; 
-            a.innerHTML = `${choice.name}`;
+            button.id = `${title}`;
+            a.innerHTML = `${title}`;
             categories.appendChild(button); 
             button.appendChild(a);
         });  
