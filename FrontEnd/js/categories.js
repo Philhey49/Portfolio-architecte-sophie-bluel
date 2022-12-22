@@ -21,6 +21,7 @@ fetch('http://localhost:5678/api/categories')
             categories.appendChild(button); 
             button.appendChild(a);
         });  
-    });
+    })
+    ;
 
     

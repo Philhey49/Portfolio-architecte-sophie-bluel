@@ -128,3 +128,6 @@ fetch("http://localhost:5678/api/users/login")
 				<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
 				<figcaption>Hotel First Arte - New Delhi</figcaption>
 			</figure>-->
+			import {choices}  from 'categories.js';
+			console.log(choices());
+			export function choices();
