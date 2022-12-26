@@ -137,15 +137,24 @@ li:hover {
 
 }
 
-.categories button{
+.categories button {
 	border: 1px solid #1D6154;
 	border-radius: 30px;
 	color: #1D6154;
 	background-color: white;
 	margin-right: 10px;
 	padding: 9px 28px;
+
+}
+.categories button a {
+	text-decoration: none;
+	color: #1D6154;
 }
 #Tous {
+	color: white;
+	background-color: #1D6154;
+}
+#Tous a{
 	color: white;
 	background-color: #1D6154;
 }
@@ -220,7 +229,7 @@ footer nav ul {
 
 #login {
 	width: 33%;
-margin: auto;
+	margin: auto;
 }
 #login > * {
 	text-align: center;

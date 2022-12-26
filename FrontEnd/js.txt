@@ -131,3 +131,17 @@ fetch("http://localhost:5678/api/users/login")
 			import {choices}  from 'categories.js';
 			console.log(choices());
 			export function choices();
+
+			    function Categories() {
+        this.id = button.id;
+        this.name = `${title}`;
+    }
+    export (Categories) ;
+	import './categories';
+	import { Category } from './categories.js';
+
+import { Category } from './categories.js';	
+	let category = new Category();
+category.id = Category.id;
+category.name = Category.name;
+figure.appendChild(category);

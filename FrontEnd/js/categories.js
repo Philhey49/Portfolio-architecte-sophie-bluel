@@ -17,11 +17,15 @@ fetch('http://localhost:5678/api/categories')
             let button = document.createElement('button');
             let a = document.createElement('a');
             button.id = `${title}`;
+            a.href = "./works?id="+button.id;
             a.innerHTML = `${title}`;
+            localStorage.setItem('filters', a.href, a.innerHTML);
             categories.appendChild(button); 
             button.appendChild(a);
         });  
     })
     ;
+
+
 
     

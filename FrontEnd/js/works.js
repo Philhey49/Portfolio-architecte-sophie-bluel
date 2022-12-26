@@ -1,4 +1,4 @@
-fetch('http://localhost:5678/api/works')	
+fetch('http://localhost:5678/api/works')
 .then(function(res) 
 {
 	if (res.ok) 
@@ -22,8 +22,18 @@ fetch('http://localhost:5678/api/works')
 		figure.appendChild(img);
 		figure.appendChild(figcaption);
 	});
+	localStorage.getItem('filters');
+	let category = ['Tous', 'Objets', 'Appartements', 'Hotels & restaurants'];
+	let name = a.innerHTML;
+	figure.appendChild(category);
+	category.appendChild(name);
+	let result = category.filter( (element) => element == 'Tous' );
+	console.log(result);
 })
 ;
+
+
+
 
 
 
