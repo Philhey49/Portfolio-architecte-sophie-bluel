@@ -1,9 +1,8 @@
-let user ={
-    'email': email,
-    'password': password,
-  };
-  (async function main () {
-    // You can use await inside this function block
+(async () => {
+    let user ={
+    email: 'email',
+    password: 'password',
+    };
     let response = await fetch('http://localhost:5678/api/users/login', {
 	method: 'POST',
 	headers: { 
@@ -14,5 +13,5 @@ let user ={
     }); 
     let result = await response.json();
     alert(result.message);
-})();  
+})()
    

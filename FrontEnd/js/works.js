@@ -24,19 +24,22 @@ fetch('http://localhost:5678/api/works')
 		figure.appendChild(figcaption);
 	});
 
-	
-
-/**/
-	//console.log(localStorage.length);
-	
+	const category = [];
 	for (let i = 0; i < 4; i++) {
 		localStorage.getItem('id'+i);
-		localStorage.getItem('name'+i);
-		console.log(localStorage["id"+i]);
-		console.log(localStorage["name"+i]);
+		let categoryid = localStorage.getItem('id'+i);
+		category.id= categoryid;
 	}
-	let category = document.getElementsByName('name');
+	for (let i = 0; i < 4; i++) {
+		localStorage.getItem('name'+i);
+		let categoryname = localStorage.getItem('name'+i);
+		category.name= categoryname;
+		console.log(categoryname);
+	}
 	console.log(category);
+	
+
+	
 
 	//category.name = localStorage.getItem(a.innerHTML);
 	//category = localStorage.getItem('onglet');
