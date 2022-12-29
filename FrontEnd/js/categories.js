@@ -23,17 +23,32 @@ fetch('http://localhost:5678/api/categories')
             categories.appendChild(button); 
             button.appendChild(a);
 
+            
+            if(i < 4){
+                localStorage.setItem('id' + i, a.href);//'filters'
+                localStorage.setItem('name' + i, a.innerHTML);
+                i++;
+            }
+            //localStorage.setItem('onglet', a.innerHTML);
+            
+        });  
+       
+        function tableau (){
+  
+        };
+
+    }
+    /*
             if(i < 4){
                 localStorage.setItem('id' + i, a.href);//'filters'
                 localStorage.setItem('name' + i, a.innerHTML);
                 i++;
             }
             localStorage.setItem('onglet', a.innerHTML);
-        });  
-       
-
-
-    })
+    */
+    
+    )
+    
     ;
 
 

@@ -24,23 +24,23 @@ fetch('http://localhost:5678/api/works')
 		figure.appendChild(figcaption);
 	});
 
+	
+
 /**/
 	//console.log(localStorage.length);
 	
 	for (let i = 0; i < 4; i++) {
 		localStorage.getItem('id'+i);
 		localStorage.getItem('name'+i);
-		//console.log(localStorage["id"+i]);
+		console.log(localStorage["id"+i]);
 		console.log(localStorage["name"+i]);
 	}
-	let category = document.getElementsByName('name'+i);
+	let category = document.getElementsByName('name');
 	console.log(category);
 
 	//category.name = localStorage.getItem(a.innerHTML);
 	//category = localStorage.getItem('onglet');
-
-
-
+	
 	if (category == localStorage.getItem('name1')){//Objets
 
 	}
