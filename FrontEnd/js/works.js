@@ -1,3 +1,4 @@
+//import  monset  from './categories.js';
 fetch('http://localhost:5678/api/works')
 .then(function(res) 
 {
@@ -23,26 +24,8 @@ fetch('http://localhost:5678/api/works')
 		figure.appendChild(img);
 		figure.appendChild(figcaption);
 	});
-
-	const category = [];
-	for (let i = 0; i < 4; i++) {
-		localStorage.getItem('id'+i);
-		let categoryid = localStorage.getItem('id'+i);
-		category.id= categoryid;
-	}
-	for (let i = 0; i < 4; i++) {
-		localStorage.getItem('name'+i);
-		let categoryname = localStorage.getItem('name'+i);
-		category.name= categoryname;
-		console.log(categoryname);
-	}
+	let category = ['Tous', 'Objets', 'Appartements', 'Hotels & restaurants'];
 	console.log(category);
-	
-
-	
-
-	//category.name = localStorage.getItem(a.innerHTML);
-	//category = localStorage.getItem('onglet');
 	
 	if (category == localStorage.getItem('name1')){//Objets
 
@@ -57,14 +40,6 @@ fetch('http://localhost:5678/api/works')
 
 	};
 
-
-
-	//let category = ['Tous', 'Objets', 'Appartements', 'Hotels & restaurants'];
-	//figure.appendChild(category);
-	//let result;
-	//result = category.filter( (element) => element == 'Tous' );
-	//result = category.filter( (element) => element == localStorage.getItem('name0') );
-	//console.log(result);
 })
 ;
 

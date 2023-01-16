@@ -46,6 +46,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+*{ box-sizing: border-box;}
 /** end reset css**/
 body {
 	max-width: 1140px;
@@ -109,6 +110,16 @@ li a:hover {
 	display: flex;
 	align-items: center;
 }
+#projects {
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+}
+#projects a {
+	margin-left: 30px;
+	text-decoration: none;
+	color: black;
+}
 #introduction figure {
 	flex: 1
 }
@@ -117,9 +128,22 @@ li a:hover {
 	margin: auto;
 	width: 80%;
 }
-
+#introduction figure a {
+	display: block;
+	margin: auto;
+	width: 80%;
+	padding-top: 15px;
+	text-decoration: none;
+	color: black;
+}
 #introduction article {
 	flex: 1
+}
+#introduction article a {
+	display: block;
+	margin-bottom: 19px;
+	text-decoration: none;
+	color: black;
 }
 #introduction h2 {
 	margin-bottom: 1em;
@@ -280,4 +304,27 @@ button[type="submit"]{
 	border-radius: 60px ;
 	border: #1D6154;
 	height: 36px;
+}
+/* Modal */
+.modal {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 1662px;
+	height: 3600px;
+	left: 0px;
+	top: 0px;
+
+	background: rgba(0, 0, 0, 0.3);
+}
+.modal-wrapper {
+	position: absolute;
+	width: 630px;
+	height: 731px;
+	left: 402px;
+	top: 601px;
+	
+	background: #FFFFFF;
+	border-radius: 10px;
 }

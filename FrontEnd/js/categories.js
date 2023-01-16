@@ -12,7 +12,6 @@ fetch('http://localhost:5678/api/categories')
         const monSet = new Set();
         let all = "Tous";
         monSet.add(all).add(choices[0].name,).add(choices[1].name,).add(choices[2].name);
-        let i = 0;
         monSet.forEach(title => 
         {
             let button = document.createElement('button');
@@ -22,18 +21,15 @@ fetch('http://localhost:5678/api/categories')
             a.innerHTML = `${title}`;
             categories.appendChild(button); 
             button.appendChild(a);
+        }); 
+        console.log(monSet.values());
+        
+        /*let i = 0;
+        category = new Array();
+        for (let i = 0; i < 4; i++) {
+            
+        }
+        console.log(category);*/
 
-            
-            if(i < 4){
-                localStorage.setItem('id' + i, a.href);//'filters'
-                localStorage.setItem('name' + i, a.innerHTML);
-                i++;
-            }
-            //localStorage.setItem('onglet', a.innerHTML);
-            
-        });  
     });
-
-
-
     
