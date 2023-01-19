@@ -64,10 +64,19 @@ fetch('http://localhost:5678/api/categories')
             button.id = `${title}`;
             a.href = "./works?id="+button.id;
             a.innerHTML = `${title}`;
+			//button.addEventListener('click', catData);
             categories.appendChild(button); 
             button.appendChild(a);
         }); 
         console.log(monSet.values());
+
+		/*const object = document.querySelector("#Objets");
+
+		object.addEventListener('click',function catData() {
+			const catObjets = projects.filter(function(project){
+				return project.title;
+			});
+		})*/
 
 		/*await const cat = projects.map(monSet => monSet.values);
 
