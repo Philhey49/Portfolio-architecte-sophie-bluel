@@ -1,4 +1,4 @@
-fetch('http://localhost:5678/api/categories')	
+/*fetch('http://localhost:5678/api/categories')	
 .then(function(res) 
 {
 	if (res.ok) 
@@ -24,12 +24,13 @@ fetch('http://localhost:5678/api/categories')
         }); 
         console.log(monSet.values());
         
-        /*let i = 0;
+       let i = 0;
         category = new Array();
         for (let i = 0; i < 4; i++) {
             
         }
-        console.log(category);*/
+        console.log(category);
 
-    });
+    });*/
+
     
