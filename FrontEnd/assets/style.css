@@ -312,7 +312,7 @@ button[type="submit"]{
 	align-items: center;
 	justify-content: center;
 	width: 1662px;
-	height: 3600px;
+	height: 3700px;
 	left: 0px;
 	top: 0px;
 
@@ -353,6 +353,7 @@ button[type="submit"]{
 #mode button{
 	background-color: #FFFFFF;
 	color: black;
+	font-size: smaller;
 }
 #mode a {
 	color: white;
