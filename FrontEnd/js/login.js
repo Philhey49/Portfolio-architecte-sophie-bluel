@@ -1,17 +1,22 @@
-(async () => {
-    let user ={
-    email: 'email',
-    password: 'password',
-    };
-    let response = await fetch('http://localhost:5678/api/users/login', {
-	method: 'POST',
-	headers: { 
-    'Accept': 'application/json', 
-    'Content-Type': 'application/json' 
-    },
-	body: JSON.stringify(user)
-    }); 
-    let result = await response.json();
-    alert(result.message);
-})()
+function submit() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+  
+    fetch('http://localhost:5678/api/users/login'), {
+        method: 'POST',
+        body: JSON.stringify({email: email, password: password}),
+        headers: { 'Content-Type': 'application/json' }
+    }
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            // Connexion réussie
+            window.location.href = '/edit.html';
+        } else {
+            // Erreur d'identification
+            alert("Erreur dans l`identifiant ou le mot de passe");
+        }
+    })
+    .catch(error => console.error('Error:', error));
+};
    

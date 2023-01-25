@@ -70,7 +70,28 @@ fetch('http://localhost:5678/api/categories')
 
 
     });
-
+	
+	/*function submitForm() {
+		var email = document.getElementById("email").value;
+		var password = document.getElementById("password").value;
+	  
+		fetch('http://localhost:5678/api/users/login'), {
+			method: 'POST',
+			body: JSON.stringify({email: email, password: password}),
+			headers: { 'Content-Type': 'application/json' }
+		}
+		.then(res => res.json())
+		.then(data => {
+			if (data.success) {
+				// Connexion réussie
+				window.location.assign('\FrontEnd\edit.html');
+			} else {
+				// Erreur d'identification
+				alert("Erreur dans l`identifiant ou le mot de passe");
+			}
+		})
+	};*/
+	
 
 
 

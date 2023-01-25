@@ -189,3 +189,30 @@ figure.appendChild(category);
 	//result = category.filter( (element) => element == 'Tous' );
 	//result = category.filter( (element) => element == localStorage.getItem('name0') );
 	//console.log(result);
+
+
+	// Stocker le jeton
+function storeToken(token) {
+    localStorage.setItem('access_token', token);
+}
+
+// Récupérer le jeton
+function getToken() {
+    return localStorage.getItem('access_token');
+}
+
+// Utiliser le jeton pour faire une requête à l'API
+function makeApiRequest() {
+    var token = getToken();
+
+    fetch('/api/data', {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        // Traitement des données
+    })
+    .catch(error => console.error('Error:', error));
+}
