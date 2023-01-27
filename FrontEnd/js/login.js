@@ -9,14 +9,18 @@ function submit() {
     }
     .then(res => res.json())
     .then(data => {
-        if (data.success) {
+        if (data.success) {                        
             // Connexion réussie
-            window.location.href = '/edit.html';
+            localStorage.setItem('access_token', token);
+            window.location.href = '\FrontEnd\index.html';
+            
         } else {
             // Erreur d'identification
             alert("Erreur dans l`identifiant ou le mot de passe");
         }
     })
     .catch(error => console.error('Error:', error));
+    
 };
+
    
