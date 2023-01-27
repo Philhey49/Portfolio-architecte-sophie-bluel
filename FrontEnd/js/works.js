@@ -70,27 +70,31 @@ fetch('http://localhost:5678/api/categories')
 
 
     });
-	
-	/*function submitForm() {
-		var email = document.getElementById("email").value;
-		var password = document.getElementById("password").value;
-	  
-		fetch('http://localhost:5678/api/users/login'), {
-			method: 'POST',
-			body: JSON.stringify({email: email, password: password}),
-			headers: { 'Content-Type': 'application/json' }
+
+	document.addEventListener('DOMContentLoaded', () => {
+		let token = localStorage.getItem('access_token')
+		let userId = localStorage.getItem('userId')
+
+		if (token && userId) {
+			document.querySelectorAll('.admin').forEach(item => {
+				item.classList.remove('hide-admin');
+			});
+		} else {
+			document.querySelectorAll('.admin').forEach(item => {
+				item.classList.add('hide-admin');
+			});
 		}
-		.then(res => res.json())
-		.then(data => {
-			if (data.success) {
-				// Connexion réussie
-				window.location.assign('\FrontEnd\edit.html');
-			} else {
-				// Erreur d'identification
-				alert("Erreur dans l`identifiant ou le mot de passe");
-			}
-		})
-	};*/
+		/*
+		if (token && userId) {
+			document.querySelectorAll('.admin').forEach(item => {
+				item.style.display = 'block';
+			});
+		} else {
+			document.querySelectorAll('.admin').forEach(item => {
+				item.style.display = 'none';
+			});
+		}*/
+	})
 	
 
 

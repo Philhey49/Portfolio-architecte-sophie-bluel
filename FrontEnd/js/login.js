@@ -1,26 +1,28 @@
-function submit() {
+// BLOQUER LA SOUMISSION DU FORMULAIRE
+document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault()
+})
+
+// ECOUTER LE CLICK DU BOUTON
+document.querySelector('#login-button').addEventListener('click', function() {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
-  
-    fetch('http://localhost:5678/api/users/login'), {
+    
+    fetch('http://localhost:5678/api/users/login', {
         method: 'POST',
-        body: JSON.stringify({email: email, password: password}),
-        headers: { 'Content-Type': 'application/json' }
-    }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({email: email, password: password})
+    })
     .then(res => res.json())
     .then(data => {
-        if (data.success) {                        
-            // Connexion réussie
-            localStorage.setItem('access_token', token);
-            window.location.href = '\FrontEnd\index.html';
-            
+        if(data.message) {
+            document.querySelector('#error-message').textContent = "Erreur dans l`identifiant ou le mot de passe"
         } else {
-            // Erreur d'identification
-            alert("Erreur dans l`identifiant ou le mot de passe");
+            localStorage.setItem('access_token', data.token)
+            localStorage.setItem('userId', data.userId) 
+            window.location.href = '/FrontEnd/';
         }
     })
-    .catch(error => console.error('Error:', error));
-    
-};
+    .catch(error => console.error(error));
+})
 
-   
