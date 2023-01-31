@@ -13,7 +13,7 @@
 </head>
 <body>
 <header>
-	<div class="edition admin hide-admin">
+	<div id="edition" class="admin hide-admin">
 		<span id="mode">
 		<a><i class="fa-solid fa-pen-to-square"></i> Mode édition </a>
 		<button type="submit">Publier les changements</button>
@@ -48,10 +48,10 @@
 		<div id="projects">
 			<h2>Mes Projets</h2><a href="#modal1" class="admin hide-admin"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
 		</div>
-		<aside id="modal1" class="modal admin hide-admin">
-			<div class="modal-wrapper" aria-hidden="true" role="dialog" aria-labelledby="Galerie Photo" aria-modal="false">
-				<i class="fa-solid fa-close"></i>
-				<h3>Galerie Photo</h3>
+		<aside id="modal1" class="modal admin hide-admin" aria-hidden="true" role="dialog" aria-labelledby="galeriephoto" aria-modal="false">
+			<div class="modal-wrapper js-modal-stop" >
+				<button class="js-modal-close"><i class="fa-solid fa-close"></i></button>
+				<h3 id="galeriephoto">Galerie Photo</h3>
 				<button type="submit">Ajouter une photo</button>
 				<a href="#">suppimer la galerie</a>
 				<i class="fa-solid fa-arrow-left-long"></i>

@@ -216,3 +216,13 @@ function makeApiRequest() {
     })
     .catch(error => console.error('Error:', error));
 }
+		
+		if (token && userId) {
+			document.querySelectorAll('.admin').forEach(item => {
+				item.style.display = 'block';
+			});
+		} else {
+			document.querySelectorAll('.admin').forEach(item => {
+				item.style.display = 'none';
+			});
+		}

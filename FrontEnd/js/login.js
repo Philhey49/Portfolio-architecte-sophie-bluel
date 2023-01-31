@@ -5,8 +5,8 @@ document.querySelector('form').addEventListener('submit', function(event) {
 
 // ECOUTER LE CLICK DU BOUTON
 document.querySelector('#login-button').addEventListener('click', function() {
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
     
     fetch('http://localhost:5678/api/users/login', {
         method: 'POST',

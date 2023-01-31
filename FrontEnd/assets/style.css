@@ -31,6 +31,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
+
 ol, ul {
 	list-style: none;
 }
@@ -322,19 +323,27 @@ button[type="submit"]{
 }
 .modal-wrapper {
 	position: absolute;
+	overflow: auto;
 	width: 630px;
+	max-width: calc(100vw - 20px);
+	max-height: calc(100vh - 20px);
 	height: 731px;
 	left: 402px;
 	top: 601px;
+	padding: 20px;
 	
 	background: #FFFFFF;
 	border-radius: 10px;
 }
-.edition {
-	display: flex;
+.admin{
+	display: none;
+}
+
+#edition {
+	/*display: flex;
 	align-items: center;
 	justify-content: center;
-	position: absolute;
+	position: absolute;*/
 	width: 100%;
 	height: 59px;
 	left: 0px;
