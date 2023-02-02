@@ -88,7 +88,7 @@
 
 			</section>
 			<button type="submit">Ajouter une photo</button>
-			<a href="#">suppimer la galerie</a>
+			<a id="nogallery" href="#">suppimer la galerie</a>
 		</article>
 		<article class="modalarticle" id="addphoto">
 			<nav class="modalfa">
@@ -97,10 +97,18 @@
 			</nav>
 			<h3>Ajout Photo</h3>
 			<section class="addmodalphoto"id="modalphoto">
-				<i class="fa-solid fa-image-landscape"></i>
-				<i class="fa-solid fa-image"></i>
+				<!--<i class="fa-solid fa-image-landscape"></i>-->
+				<div class="landscape"><i class="fa-solid fa-image"></i></div>
+				<button class="buttonadd">+ Ajouter photo</button>
+				<a>jpg, png : 4mo max</a>
 			</section>
-			<button type="submit">Valider</button>
+			<div class="titlecat">
+				<label for="title">Titre</label>
+				<input type="text" name="title" id="title">
+				<label for="Categorie">Catégorie</label>
+				<input type="list" name="cat" id="cat">
+			</div>
+			<button type="submit" id="addbutton">Valider</button>
 		</article>
 	</div>
 </aside>
