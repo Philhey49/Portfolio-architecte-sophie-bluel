@@ -180,14 +180,19 @@ li a:hover {
 
 }
 
-button:focus {
+.categories button.cat-active {
+	color: white;
+	background-color: #1D6154;
+}
+
+/* button:focus {
 	color: white;
 	background-color: #1D6154;
 }
 button:active {
 	color: white;
     background-color: #1D6154;
-}
+} */
 
 
 .gallery {
@@ -308,50 +313,15 @@ button[type="submit"]{
 	border: #1D6154;
 	height: 36px;
 }
-/* Modal */
-.modal {
-	position: absolute;
+
+#edition {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 1662px;
-	height: 3700px;
-	left: 0px;
-	top: 0px;
-
-	background: rgba(0, 0, 0, 0.3);
-}
-.modal-wrapper {
-	position: absolute;
-	overflow: auto;
-	width: 630px;
-	max-width: calc(100vw - 20px);
-	max-height: calc(100vh - 20px);
-	height: 731px;
-	left: 402px;
-	top: 601px;
-	padding: 20px;
-	
-	background: #FFFFFF;
-	border-radius: 10px;
-}
-.admin{
-	display: none;
-}
-
-#edition {
-	/*display: flex;
-	align-items: center;
-	justify-content: center;
-	position: absolute;*/
-	width: 100%;
-	height: 59px;
-	left: 0px;
-	top: 0px;
+	padding: 10px 50px;
 	background: black;
-	margin-left: auto;
-	margin-right: auto;
 }
+
 #mode {
 	width: 367px;
 	display: flex;
@@ -375,7 +345,55 @@ button[type="submit"]{
 	display: none;
 }
 
-
 .hide-admin {
-	display: none;
+	display: none !important;
+}
+/* Modal */
+.modal {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	min-height: 100vh;
+	left: 0px;
+	top: 0px;
+	background: rgba(0, 0, 0, 0.3);
+}
+.modal-wrapper {
+	overflow: auto;
+	max-width: 630px;
+	width: 100%;
+	padding: 20px;
+	background: #FFFFFF;
+	border-radius: 10px;
+}
+.modalarticle {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.modalfa {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: space-between;
+	margin: 6px;
+}
+.hidefa {
+	visibility: hidden;
+}
+.modalgallery {
+	width: 66%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+}
+.modalgallery img {
+	width: 100%;
+}
+.modalarticle h3{
+	font-size: 30px;
 }

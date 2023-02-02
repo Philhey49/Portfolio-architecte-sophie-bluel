@@ -12,13 +12,13 @@
 	<script src="https://kit.fontawesome.com/87ead40bb5.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<div id="edition" class="admin hide-admin">
+	<span id="mode">
+	<a><i class="fa-solid fa-pen-to-square"></i> Mode édition </a>
+	<button type="submit">Publier les changements</button>
+	</span>
+</div>
 <header>
-	<div id="edition" class="admin hide-admin">
-		<span id="mode">
-		<a><i class="fa-solid fa-pen-to-square"></i> Mode édition </a>
-		<button type="submit">Publier les changements</button>
-		</span>
-	</div>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
@@ -48,19 +48,6 @@
 		<div id="projects">
 			<h2>Mes Projets</h2><a href="#modal1" class="admin hide-admin"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
 		</div>
-		<aside id="modal1" class="modal admin hide-admin" aria-hidden="true" role="dialog" aria-labelledby="galeriephoto" aria-modal="false">
-			<div class="modal-wrapper js-modal-stop" >
-				<button class="js-modal-close"><i class="fa-solid fa-close"></i></button>
-				<h3 id="galeriephoto">Galerie Photo</h3>
-				<button type="submit">Ajouter une photo</button>
-				<a href="#">suppimer la galerie</a>
-				<i class="fa-solid fa-arrow-left-long"></i>
-				<i class="fa-solid fa-close"></i>
-				<h3>Ajout Photo</h3>
-				<i class="fa-solid fa-image-landscape"></i>
-				<i class="fa-solid fa-image"></i>
-			</div>
-		</aside>
 		<div class="categories" id="choices">
 		</div>
 		<div class="gallery" id="room">		
@@ -88,6 +75,36 @@
 		</ul>
 	</nav>
 </footer>
+
+<aside id="modal1" class="modal admin hide-admin" aria-hidden="true" role="dialog" aria-labelledby="galerieajout" aria-modal="false">
+	<div class="modal-wrapper js-modal-stop" >
+		<article class="modalarticle" id="galeryphoto">
+			<nav class="modalfa">
+				<div class="js-modal-return hidefa"><i class="fa-solid fa-arrow-left-long"></i></div>
+				<div class="js-modal-close"><i class="fa-solid fa-close"></i></div>
+			</nav>
+			<h3>Galerie Photo</h3>
+			<section class="modalgallery"id="modalroom">
+
+			</section>
+			<button type="submit">Ajouter une photo</button>
+			<a href="#">suppimer la galerie</a>
+		</article>
+		<article class="modalarticle" id="addphoto">
+			<nav class="modalfa">
+				<div class="js-modal-return"><i class="fa-solid fa-arrow-left-long"></i></div>
+				<div class="js-modal-close"><i class="fa-solid fa-close"></i></div>
+			</nav>
+			<h3>Ajout Photo</h3>
+			<section class="addmodalphoto"id="modalphoto">
+				<i class="fa-solid fa-image-landscape"></i>
+				<i class="fa-solid fa-image"></i>
+			</section>
+			<button type="submit">Valider</button>
+		</article>
+	</div>
+</aside>
+
 <!--<script src="js/categories.js"></script>-->
 <script src="js/works.js"></script>
 </body>

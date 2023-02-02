@@ -1,3 +1,6 @@
+const token = localStorage.getItem('access_token') ? localStorage.getItem('access_token') : false
+const userId = localStorage.getItem('userId') ? localStorage.getItem('userId') : false
+
 //import  monset  from './categories.js';
 fetch('http://localhost:5678/api/works')
 .then(function(res) 
@@ -25,6 +28,23 @@ fetch('http://localhost:5678/api/works')
 		gallery.appendChild(figure);
 		figure.appendChild(img);
 		figure.appendChild(figcaption);
+
+		// S'il est admin, charger les images dans la popup egalement
+		if (token && userId ) {
+			const modalgallery = document.getElementById('modalroom');
+			let modalfigure = document.createElement('figure');
+			modalfigure.classList.add('project-item');
+			modalfigure.setAttribute('data-cat', project.categoryId);
+			let modalimg = document.createElement('img');
+			let modalfigcaption = document.createElement('figcaption');
+			modalimg.src = project.imageUrl;
+			modalimg.setAttribute("crossorigin", "anonymous");
+			modalimg.alt = project.title;
+			modalfigcaption.innerHTML = `éditer`;
+			modalgallery.appendChild(modalfigure);
+			modalfigure.appendChild(modalimg);
+			modalfigure.appendChild(modalfigcaption);
+		}
 	});
 
 })
@@ -48,11 +68,15 @@ fetch('http://localhost:5678/api/categories')
 
         choices.forEach(choice => 
         {
-            let button = document.createElement('button');
+			let button = document.createElement('button');
             button.innerHTML = `${choice.name}`;
 			button.setAttribute('data-cat', choice.id)
+			choice.id === 0 && button.classList.add('cat-active') 
             categories.appendChild(button); 
+
 			button.addEventListener('click', function() {
+				document.querySelector('.cat-active').classList.remove('cat-active')
+				button.classList.add('cat-active')
 				let currentcategory = button.getAttribute('data-cat')
 				let projects = document.querySelectorAll('.project-item')
 				projects.forEach(function(item) {
@@ -153,14 +177,11 @@ document.querySelector(".loginbutton").addEventListener('click', function() {
 	}
 
 	document.addEventListener('DOMContentLoaded', () => {
-		const token = localStorage.getItem('access_token')
-		const userId = localStorage.getItem('userId')
 
 		if (token && userId ) {
 			document.querySelectorAll('.admin').forEach(item => {
 				item.classList.remove('hide-admin')
 				item.addEventListener('click', openModal)
-				
 			});
 		} else {
 			document.querySelectorAll('.admin').forEach(item => {
