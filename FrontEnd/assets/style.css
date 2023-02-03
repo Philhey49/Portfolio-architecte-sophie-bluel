@@ -318,7 +318,7 @@ button[type="submit"]{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 10px 50px;
+	padding: 10px 10px;
 	background: black;
 }
 
@@ -334,6 +334,7 @@ button[type="submit"]{
 	background-color: #FFFFFF;
 	color: black;
 	font-size: smaller;
+	margin: 1em;
 }
 #mode a {
 	color: white;
@@ -346,6 +347,9 @@ button[type="submit"]{
 }
 
 .hide-admin {
+	display: none !important;
+}
+.hide-modal {
 	display: none !important;
 }
 /* Modal */
@@ -426,7 +430,7 @@ button[type="submit"]{
 	font-size: 4em;
 	color: #B9C5CC;
 }
-.buttonadd {
+#buttonadd {
 	background: #CBD6DC;
 	border-radius: 50px;
 	border: #CBD6DC;
@@ -472,4 +476,14 @@ button[type="submit"]{
 	font-size: 14px;
 	margin-top: 32px;
 	margin-bottom: 55px;
+}
+.imggallery {
+	z-index: 1;
+}
+.delete {
+	position:absolute; top: 10; right: 10;
+	z-index: 2;
+	background: #000000;
+	border-radius: 2px;
+	color: #FFFEF8;
 }

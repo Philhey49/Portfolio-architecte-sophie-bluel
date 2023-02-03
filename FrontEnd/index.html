@@ -48,7 +48,7 @@
 		<div id="projects">
 			<h2>Mes Projets</h2><a href="#modal1" class="admin hide-admin"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
 		</div>
-		<div class="categories" id="choices">
+		<div class="categories not-hide" id="choices">
 		</div>
 		<div class="gallery" id="room">		
 		</div>
@@ -76,7 +76,7 @@
 	</nav>
 </footer>
 
-<aside id="modal1" class="modal admin hide-admin" aria-hidden="true" role="dialog" aria-labelledby="galerieajout" aria-modal="false">
+<aside id="modal1" class="modal admin hide-modal" aria-hidden="true" role="dialog" aria-labelledby="galerieajout" aria-modal="false">
 	<div class="modal-wrapper js-modal-stop" >
 		<article class="modalarticle" id="galeryphoto">
 			<nav class="modalfa">
@@ -85,7 +85,6 @@
 			</nav>
 			<h3>Galerie Photo</h3>
 			<section class="modalgallery"id="modalroom">
-
 			</section>
 			<button type="submit">Ajouter une photo</button>
 			<a id="nogallery" href="#">suppimer la galerie</a>
@@ -99,7 +98,7 @@
 			<section class="addmodalphoto"id="modalphoto">
 				<!--<i class="fa-solid fa-image-landscape"></i>-->
 				<div class="landscape"><i class="fa-solid fa-image"></i></div>
-				<button class="buttonadd">+ Ajouter photo</button>
+				<button id="buttonadd">+ Ajouter photo</button>
 				<a>jpg, png : 4mo max</a>
 			</section>
 			<div class="titlecat">

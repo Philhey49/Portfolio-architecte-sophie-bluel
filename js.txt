@@ -226,3 +226,9 @@ function makeApiRequest() {
 				item.style.display = 'none';
 			});
 		}
+		Pour l'instant j'ai essentiellement un retour
+- ce button : <button class="buttonadd">+ Ajouter photo</button> doit etre remplacé par un input type file et un label qui renvoie vers l'input type file.
+[10:46]
+Pour le reste ça me semble bien, il reste plus qu'a faire les interactions de la popup
+[10:46]
+à savoir : Afficher, fermer et naviguer dans la popup

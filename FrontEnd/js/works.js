@@ -36,12 +36,17 @@ fetch('http://localhost:5678/api/works')
 			modalfigure.classList.add('project-item');
 			modalfigure.setAttribute('data-cat', project.categoryId);
 			let modalimg = document.createElement('img');
+			modalimg.classList.add('imggallery')
+			let deleteButton = document.createElement('button');
+			deleteButton.classList.add('delete');
+			deleteButton.innerHTML = '&#128465;';
 			let modalfigcaption = document.createElement('figcaption');
 			modalimg.src = project.imageUrl;
 			modalimg.setAttribute("crossorigin", "anonymous");
 			modalimg.alt = project.title;
 			modalfigcaption.innerHTML = `éditer`;
 			modalgallery.appendChild(modalfigure);
+			modalfigure.appendChild(deleteButton);
 			modalfigure.appendChild(modalimg);
 			modalfigure.appendChild(modalfigcaption);
 		}
@@ -180,16 +185,21 @@ document.querySelector(".loginbutton").addEventListener('click', function() {
 
 		if (token && userId ) {
 			document.querySelectorAll('.admin').forEach(item => {
-				item.classList.remove('hide-admin')
-				item.addEventListener('click', openModal)
+				item.classList.remove('hide-admin')	
+			});
+			document.querySelectorAll('.not-hide').forEach(item => {
+				item.classList.add('hide-admin')	
 			});
 		} else {
 			document.querySelectorAll('.admin').forEach(item => {
 				item.classList.add('hide-admin')
 			});
 		}
-
 	})
+
+	/*document.querySelector('#modal1').addEventListener('click', openModal  {
+		classList.remove('hide-admin')
+	})*/
 
 	window.addEventListener('keydown', function(e) {
 		if (e.key === "Escape" || e.key === "Esc") {
