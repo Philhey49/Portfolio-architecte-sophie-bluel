@@ -185,14 +185,14 @@ li a:hover {
 	background-color: #1D6154;
 }
 
-/* button:focus {
+button:focus {
 	color: white;
 	background-color: #1D6154;
 }
 button:active {
 	color: white;
     background-color: #1D6154;
-} */
+} 
 
 
 .gallery {
@@ -345,7 +345,6 @@ button[type="submit"]{
 .hide-work {
 	display: none;
 }
-
 .hide-admin {
 	display: none !important;
 }

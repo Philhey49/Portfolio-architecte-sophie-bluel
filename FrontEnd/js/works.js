@@ -1,7 +1,7 @@
+
 const token = localStorage.getItem('access_token') ? localStorage.getItem('access_token') : false
 const userId = localStorage.getItem('userId') ? localStorage.getItem('userId') : false
 
-//import  monset  from './categories.js';
 fetch('http://localhost:5678/api/works')
 .then(function(res) 
 {
@@ -30,7 +30,7 @@ fetch('http://localhost:5678/api/works')
 		figure.appendChild(figcaption);
 
 		// S'il est admin, charger les images dans la popup egalement
-		if (token && userId ) {
+		if (token && userId) {
 			const modalgallery = document.getElementById('modalroom');
 			let modalfigure = document.createElement('figure');
 			modalfigure.classList.add('project-item');
@@ -98,35 +98,30 @@ fetch('http://localhost:5678/api/categories')
 
 
     });
-/*
-	// BLOQUER LA SOUMISSION DU FORMULAIRE
-document.querySelector('form').addEventListener('submit', function(event) {
-    event.preventDefault()
-})
 
-// ECOUTER LE CLICK DU BOUTON
-document.querySelector(".loginbutton").addEventListener('click', function() {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    
-    fetch('http://localhost:5678/api/users/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({email: email, password: password})
-    })
-    .then(res => res.json())
-    .then(data => {
-        if(data.message) {
-            document.querySelector('#error-message').textContent = "Erreur dans l`identifiant ou le mot de passe"
-        } else {
-            localStorage.setItem('access_token', data.token)
-            localStorage.setItem('userId', data.userId) 
-            window.location.href = '/FrontEnd/';
-        }
-    })
-    .catch(error => console.error(error));
-})
-*/
+	document.addEventListener('DOMContentLoaded', () => {
+
+		if (token && userId) {
+			document.querySelectorAll('.admin').forEach(item => {
+				item.classList.remove('hide-admin')	
+	
+			});
+			document.querySelectorAll('.not-hide').forEach(item => {
+				item.classList.add('hide-admin')	
+			});
+			document.addEventListener('#modal1').forEach(a => {
+				a.addEventListener('click', openModal)
+			});
+		} else {
+			document.querySelectorAll('.admin').forEach(item => {
+				item.classList.add('hide-admin')
+			});
+			document.querySelectorAll('.not-hide').forEach(item => {
+				item.classList.remove('hide-admin')	
+			});
+		}
+	})
+
 	let modal = null
 	const focusableSelector = 'button, a, input,textarea'
 	let focusables = []
@@ -181,21 +176,7 @@ document.querySelector(".loginbutton").addEventListener('click', function() {
 
 	}
 
-	document.addEventListener('DOMContentLoaded', () => {
 
-		if (token && userId ) {
-			document.querySelectorAll('.admin').forEach(item => {
-				item.classList.remove('hide-admin')	
-			});
-			document.querySelectorAll('.not-hide').forEach(item => {
-				item.classList.add('hide-admin')	
-			});
-		} else {
-			document.querySelectorAll('.admin').forEach(item => {
-				item.classList.add('hide-admin')
-			});
-		}
-	})
 
 	/*document.querySelector('#modal1').addEventListener('click', openModal  {
 		classList.remove('hide-admin')
