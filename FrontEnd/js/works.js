@@ -109,9 +109,6 @@ fetch('http://localhost:5678/api/categories')
 			document.querySelectorAll('.not-hide').forEach(item => {
 				item.classList.add('hide-admin')	
 			});
-			document.addEventListener('#modal1').forEach(a => {
-				a.addEventListener('click', openModal)
-			});
 		} else {
 			document.querySelectorAll('.admin').forEach(item => {
 				item.classList.add('hide-admin')
@@ -121,9 +118,9 @@ fetch('http://localhost:5678/api/categories')
 			});
 		}
 	})
-
+	
 	let modal = null
-	const focusableSelector = 'button, a, input,textarea'
+	const focusableSelector = 'button, a, input, textarea'
 	let focusables = []
 	let previouslyFocusedElement = null
 
@@ -134,7 +131,7 @@ fetch('http://localhost:5678/api/categories')
 		previouslyFocusedElement = document.querySelector(':focus')
 		focusables[0].focus()
 		modal.style.display = null
-		modal.removeAttribute('aria-hidden')
+		modal.removeAttribute('aria-hidden', false)
 		modal.setAttribute('aria-modal', true)
 		modal.addEventListener('click', closeModal)
 		modal.querySelector('js-modal-close').addEventListener('click', closeModal)
@@ -176,12 +173,6 @@ fetch('http://localhost:5678/api/categories')
 
 	}
 
-
-
-	/*document.querySelector('#modal1').addEventListener('click', openModal  {
-		classList.remove('hide-admin')
-	})*/
-
 	window.addEventListener('keydown', function(e) {
 		if (e.key === "Escape" || e.key === "Esc") {
 			closeModal(e)
@@ -191,7 +182,11 @@ fetch('http://localhost:5678/api/categories')
 		}
 	})
 	
-
+	document.addEventListener('click', function(e) {
+	
+		document.querySelector('.hide-modal').classList.remove('hide-modal')
+		
+	})
 
 
 
