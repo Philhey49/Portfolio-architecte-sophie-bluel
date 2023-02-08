@@ -187,7 +187,12 @@ fetch('http://localhost:5678/api/categories')
 		document.querySelector('.hide-modal').classList.remove('hide-modal')
 		
 	})
-
+	/*document.addEventListener('click', function(e) {
+	
+		document.querySelector('.button-add-photo').classList.remove('hide-modal')
+		
+	})
+    */
 
 
 

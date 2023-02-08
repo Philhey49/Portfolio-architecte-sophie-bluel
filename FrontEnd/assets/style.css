@@ -351,6 +351,9 @@ button[type="submit"]{
 .hide-modal {
 	display: none !important;
 }
+.hide-article {
+	display: none !important;
+}
 /* Modal */
 .modal {
 	position: fixed;
