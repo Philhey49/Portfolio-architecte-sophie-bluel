@@ -37,18 +37,24 @@ fetch('http://localhost:5678/api/works')
 			modalfigure.setAttribute('data-cat', project.categoryId);
 			let modalimg = document.createElement('img');
 			modalimg.classList.add('imggallery')
-			let deleteButton = document.createElement('button');
-			deleteButton.classList.add('delete');
-			deleteButton.innerHTML = '&#128465;';
+
+			let actionOptions = document.createElement('div')
+			actionOptions.classList.add('action-options')
+			actionOptions.innerHTML = `
+				<button class="action-item hover-action-item"><i class="fa-solid fa-arrows-up-down-left-right"></i></button>
+				<button class="action-item"><i class="fa-regular fa-trash-can"></i></button>
+			`
+
 			let modalfigcaption = document.createElement('figcaption');
 			modalimg.src = project.imageUrl;
 			modalimg.setAttribute("crossorigin", "anonymous");
 			modalimg.alt = project.title;
 			modalfigcaption.innerHTML = `éditer`;
 			modalgallery.appendChild(modalfigure);
-			modalfigure.appendChild(deleteButton);
+			modalfigure.appendChild(actionOptions);
 			modalfigure.appendChild(modalimg);
 			modalfigure.appendChild(modalfigcaption);
+
 		}
 	});
 
@@ -69,6 +75,15 @@ fetch('http://localhost:5678/api/categories')
 			id: 0,
 			name: 'Tous'
 		})
+		// SELECT DES CATEGORIES
+		choices.forEach(function(cat) {
+		
+			document.querySelector('#popup-add-category').innerHTML += `<option data-cat="${cat.id}">${cat.name}</option>`
+
+		})
+
+		// AFFICHAGE DES CATEGORIES + GESTION DU CLICK
+
         const categories = document.getElementById('choices');
 
         choices.forEach(choice => 
@@ -79,6 +94,7 @@ fetch('http://localhost:5678/api/categories')
 			choice.id === 0 && button.classList.add('cat-active') 
             categories.appendChild(button); 
 
+			
 			button.addEventListener('click', function() {
 				document.querySelector('.cat-active').classList.remove('cat-active')
 				button.classList.add('cat-active')
@@ -89,11 +105,12 @@ fetch('http://localhost:5678/api/categories')
 					if(
 						item.getAttribute('data-cat') !== currentcategory && currentcategory !== '0'
 						) {
-						item.classList.add('hide-work')
-					}
-				})
-
-			});
+							item.classList.add('hide-work')
+						}
+					})
+					
+				});
+				
         }); 
 
 
@@ -118,81 +135,53 @@ fetch('http://localhost:5678/api/categories')
 			});
 		}
 	})
-	
-	let modal = null
-	const focusableSelector = 'button, a, input, textarea'
-	let focusables = []
-	let previouslyFocusedElement = null
 
-	const openModal = function(e) {
-		e.preventDefault()
-		modal = document.querySelector(e.target.getAttribute('href'))
-		focusables = Array.from(modal.querySelectorAll(focusableSelector))
-		previouslyFocusedElement = document.querySelector(':focus')
-		focusables[0].focus()
-		modal.style.display = null
-		modal.removeAttribute('aria-hidden', false)
-		modal.setAttribute('aria-modal', true)
-		modal.addEventListener('click', closeModal)
-		modal.querySelector('js-modal-close').addEventListener('click', closeModal)
-		modal.querySelector('js-modal-stop').addEventListener('click', stopPropagation)
-	}
+	document.querySelectorAll('.open-modal').forEach( function(modalOpener) {
+		modalOpener.addEventListener('click', function() {
 
-	const closeModal = function (e) {
-		if (modal === null) return
-		if (previouslyFocusedElement !== null) previouslyFocusedElement.focus()
-		e.preventDefault()
-		modal.style.display = "none"
-		modal.setAttribute('aria-hidden', true)
-		modal.removeAttribute('aria-modal')
-		modal.removeEventListener('click', closeModal)
-		modal.querySelector('js-modal-close').removeEventListener('click', closeModal)
-		modal.querySelector('js-modal-stop').removeEventListener('click', stopPropagation)
-		modal = null
-	}
+			let popup = modalOpener.getAttribute('data-modal')
 
-	const stopPropagation = function (e) {
-		e.stopPropagation()
-	}
+			if(document.querySelector(`#${popup}`)) {
+				document.querySelector(`#${popup}`).classList.remove('hide-modal')
+			} else {
+				alert("Il n'y a pour l'instant aucune popup de connectée à ce bouton")
+			}
 
-	const focusInModal = function(e) {
-		e.preventDefault()
-		let index = focusables.findIndex(f => f === modal.querySelector(':focus'))
-		if (e.shiftKey === true) {
-			index--
-		} else {
-			index++
-		}
-		if (index >= focusables.length) {
-			index = 0
-		}
-		if (index < 0) {
-			index = focusables.length - 1
-		}
-		focusables[index].focus()
-
-	}
-
-	window.addEventListener('keydown', function(e) {
-		if (e.key === "Escape" || e.key === "Esc") {
-			closeModal(e)
-		}
-		if (e.key === "Tab" && modal !== null) {
-			focusInModal(e)
-		}
+		})
 	})
-	
-	document.addEventListener('click', function(e) {
-	
-		document.querySelector('.hide-modal').classList.remove('hide-modal')
-		
+
+	document.querySelector('#goToAddView').addEventListener('click', function() {
+		document.querySelector('#galleryPhoto').classList.add('hide-article')
+		document.querySelector('#addPhoto').classList.remove('hide-article')
 	})
-	/*document.addEventListener('click', function(e) {
-	
-		document.querySelector('.button-add-photo').classList.remove('hide-modal')
-		
+
+	document.querySelector('#return-to-projects').addEventListener('click', function() {
+		document.querySelector('#galleryPhoto').classList.remove('hide-article')
+		document.querySelector('#addPhoto').classList.add('hide-article')
 	})
-    */
+
+
+// Fermeture de la modal
+
+document.querySelectorAll('.js-modal-close').forEach(function(item) {
+
+	item.addEventListener('click', function() {
+		item.closest('.modal').classList.add("hide-modal")
+	})
+
+})
+
+document.querySelectorAll('.modal').forEach(function(modal) {
+	modal.addEventListener('click', function(event) {
+		modal.closest('.modal').classList.add("hide-modal")
+	})
+})
+
+document.querySelectorAll('.modal-wrapper').forEach(function(wrapper) {
+	wrapper.addEventListener('click', function(event) {
+		event.stopPropagation()
+	})
+})
 
 
 

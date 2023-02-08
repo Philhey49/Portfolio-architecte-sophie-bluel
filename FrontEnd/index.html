@@ -34,10 +34,10 @@
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="sophie-bluel">
-			<div class="admin hide-admin"><a href="#modal3"><i class="fa-solid fa-pen-to-square"></i>modifier</a></div>
+			<div class="admin hide-admin"><span class="admin hide-admin open-modal" data-modal="modal3"><i class="fa-solid fa-pen-to-square"></i>modifier</span></div>
 		</figure>
 		<article>
-			<div class="admin hide-admin"><a href="#modal2"><i class="fa-solid fa-pen-to-square"></i>modifier</a></div>
+			<div class="admin hide-admin"><span class="admin hide-admin open-modal" data-modal="modal2"><i class="fa-solid fa-pen-to-square"></i>modifier</span></div>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
 			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
@@ -46,7 +46,7 @@
 	</section>
 	<section id="portfolio">
 		<div id="projects">
-			<h2>Mes Projets</h2><a href="#modal1" class="admin hide-admin"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
+			<h2>Mes Projets</h2><span class="admin hide-admin open-modal" data-modal="modal1"><i class="fa-solid fa-pen-to-square"></i>modifier</span>
 		</div>
 		<div class="categories not-hide" id="choices">
 		</div>
@@ -78,7 +78,7 @@
 
 <aside id="modal1" class="modal admin hide-modal" aria-hidden="true" role="dialog" aria-labelledby="galerieajout" aria-modal="false">
 	<div class="modal-wrapper js-modal-stop" >
-		<article class="modalarticle" id="galeryphoto">
+		<article class="modalarticle" id="galleryPhoto">
 			<nav class="modalfa">
 				<div class="js-modal-return hidefa"><i class="fa-solid fa-arrow-left-long"></i></div>
 				<div class="js-modal-close"><i class="fa-solid fa-close"></i></div>
@@ -86,26 +86,27 @@
 			<h3>Galerie Photo</h3>
 			<section class="modalgallery"id="modalroom">
 			</section>
-			<button type="submit" class="button-add-photo">Ajouter une photo</button>
+			<button type="submit" id="goToAddView" class="button-add-photo">Ajouter une photo</button>
 			<a id="nogallery" href="#">supprimer la galerie</a>
 		</article>
-		<article class="modalarticle hide-article" id="addphoto">
+		<article class="modalarticle hide-article" id="addPhoto">
 			<nav class="modalfa">
-				<div class="js-modal-return"><i class="fa-solid fa-arrow-left-long"></i></div>
+				<div class="js-modal-return" id="return-to-projects"><i class="fa-solid fa-arrow-left-long"></i></div>
 				<div class="js-modal-close"><i class="fa-solid fa-close"></i></div>
 			</nav>
 			<h3>Ajout Photo</h3>
-			<section class="addmodalphoto"id="modalphoto">
+			<label for="add-photo-input" class="addmodalphoto" id="modalphoto">
 				<!--<i class="fa-solid fa-image-landscape"></i>-->
 				<div class="landscape"><i class="fa-solid fa-image"></i></div>
-				<button id="buttonadd">+ Ajouter photo</button>
-				<a>jpg, png : 4mo max</a>
-			</section>
+				<span id="buttonAdd">+ Ajouter photo</span>
+				<span>jpg, png : 4mo max</span>
+			</label>
+			<input id="add-photo-input" type="file" hidden>
 			<div class="titlecat">
 				<label for="title">Titre</label>
 				<input type="text" name="title" id="title">
 				<label for="Categorie">Catégorie</label>
-				<input type="list" name="cat" id="cat">
+				<select id="popup-add-category"></select>
 			</div>
 			<button type="submit" id="addbutton">Valider</button>
 		</article>
