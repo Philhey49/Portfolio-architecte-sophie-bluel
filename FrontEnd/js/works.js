@@ -183,9 +183,35 @@ document.querySelectorAll('.modal-wrapper').forEach(function(wrapper) {
 	})
 })
 
-
-
-
+fetch('http://localhost:5678/api/works/1',{
+	method: 'delete',
+	headers: {'Content-Type': 'application/json', 'Accept': '*/*'} ,
+	body: JSON.stringify({id: id})
+})
+.then(function(res) 
+{
+	if (res.ok) 
+	{
+	return res.json();
+	}
+	throw new Error('Erreur lors de la suppression de l\'élément');
+})
+.then(data => {
+	if (data.success) {
+	  // Supprimer l'élément du DOM
+	  document.getElementById('works' + id).remove();
+	} else {
+	  // Afficher une erreur
+	  alert('Erreur lors de la suppression de l\'élément');
+	}
+  })
+  .catch(error => {
+	console.error(error);
+  });
+  
+  
+  
+  
 
 
 

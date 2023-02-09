@@ -490,9 +490,9 @@ button[type="submit"]{
 	height: 51px;
 	border: 1px solid #3D3D3D;
 }
-#popup-add-category : {
+/*#popup-add-category : {
 	color: #FFFFFF;
-}
+}*/
 #addbutton {
 	background: #A7A7A7;
 	border-radius: 60px;
