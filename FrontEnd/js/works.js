@@ -2,6 +2,7 @@
 const token = localStorage.getItem('access_token') ? localStorage.getItem('access_token') : false
 const userId = localStorage.getItem('userId') ? localStorage.getItem('userId') : false
 
+
 fetch('http://localhost:5678/api/works')
 .then(function(res) 
 {
@@ -35,6 +36,7 @@ fetch('http://localhost:5678/api/works')
 			let modalfigure = document.createElement('figure');
 			modalfigure.classList.add('project-item');
 			modalfigure.setAttribute('data-cat', project.categoryId);
+			modalfigure.setAttribute('id', project.id);
 			let modalimg = document.createElement('img');
 			modalimg.classList.add('imggallery')
 
@@ -42,7 +44,7 @@ fetch('http://localhost:5678/api/works')
 			actionOptions.classList.add('action-options')
 			actionOptions.innerHTML = `
 				<button class="action-item hover-action-item"><i class="fa-solid fa-arrows-up-down-left-right"></i></button>
-				<button class="action-item"><i class="fa-regular fa-trash-can"></i></button>
+				<button class="action-item" id=${modalfigure.id}><i class="fa-regular fa-trash-can"></i></button>
 			`
 
 			let modalfigcaption = document.createElement('figcaption');
@@ -183,10 +185,12 @@ document.querySelectorAll('.modal-wrapper').forEach(function(wrapper) {
 	})
 })
 
-fetch('http://localhost:5678/api/works/1',{
+let itemId = modalfigure.target.dataset.itemId;
+
+fetch('http://localhost:5678/api/works/',{
 	method: 'delete',
-	headers: {'Content-Type': 'application/json', 'Accept': '*/*'} ,
-	body: JSON.stringify({id: id})
+	headers: {'Content-Type': 'application/json', 'Accept': '*/*', 'Authorization': 'Bearer ${token}'} ,
+	body: JSON.stringify({id : itemId})
 })
 .then(function(res) 
 {
@@ -199,14 +203,17 @@ fetch('http://localhost:5678/api/works/1',{
 .then(data => {
 	if (data.success) {
 	  // Supprimer l'élément du DOM
-	  document.getElementById('works' + id).remove();
+		actionOptions.addEventListener('click', e => {
+		e.preventDefault()
+		document.getElementById('modalfigure' + itemId).remove();
+	  	})
 	} else {
 	  // Afficher une erreur
 	  alert('Erreur lors de la suppression de l\'élément');
 	}
   })
   .catch(error => {
-	console.error(error);
+	console. Error(error);
   });
   
   
