@@ -38,15 +38,17 @@ fetch('http://localhost:5678/api/works')
 			modalfigure.setAttribute('data-cat', project.categoryId);
 			modalfigure.setAttribute('id', project.id);
 			let modalimg = document.createElement('img');
-			modalimg.classList.add('imggallery')
+			modalimg.classList.add('imggallery');
 
-			let actionOptions = document.createElement('div')
-			actionOptions.classList.add('action-options')
+			let actionOptions = document.createElement('div');
+			actionOptions.classList.add('action-options');
 			actionOptions.innerHTML = `
 				<button class="action-item hover-action-item"><i class="fa-solid fa-arrows-up-down-left-right"></i></button>
-				<button class="action-item" id=${modalfigure.id}><i class="fa-regular fa-trash-can"></i></button>
-			`
-
+				<button class="action-item" id=${modalfigure.id}><i class="fa-regular fa-trash-can"></i></button>`;
+			actionOptions.addEventListener('click', e => {
+					e.preventDefault()
+					document.getElementById(project.id).remove();
+					  });
 			let modalfigcaption = document.createElement('figcaption');
 			modalimg.src = project.imageUrl;
 			modalimg.setAttribute("crossorigin", "anonymous");
@@ -185,11 +187,11 @@ document.querySelectorAll('.modal-wrapper').forEach(function(wrapper) {
 	})
 })
 
-let itemId = modalfigure.target.dataset.itemId;
+//let itemId = modalfigure.target.dataset.itemId;
 
-fetch('http://localhost:5678/api/works/',{
+/*fetch('http://localhost:5678/api/works/',{
 	method: 'delete',
-	headers: {'Content-Type': 'application/json', 'Accept': '*/*', 'Authorization': 'Bearer ${token}'} ,
+	headers: {'Content-Type': 'application/json', 'Accept': '*//*', 'Authorization': 'Bearer ${token}'} ,
 	body: JSON.stringify({id : itemId})
 })
 .then(function(res) 
@@ -215,9 +217,34 @@ fetch('http://localhost:5678/api/works/',{
   .catch(error => {
 	console. Error(error);
   });
-  
-  
-  
+  */
+const addPhoto = document.querySelector('#addPhoto');
+addPhoto.addEventListener('submit', (e) => {
+	e.preventDefault();
+	const formData = new FormData();
+	const image = document.querySelector('input[type="file"]').files[0];
+	const title = document.querySelector('input[name="title"]').textContent;
+	const category = document.querySelector('select[name="Categorie"]').categoryId;
+	
+	formData.append('imageUrl', image);
+	formData.append('title', title);
+	formData.append('categoryId', category);
+	
+	fetch('http://localhost:5678/api/works/',{
+		method: 'POST',
+		headers: {'Content-Type': 'multipart/form-data', 'Accept': 'application/json', 'Authorization': 'Bearer ${token}'},
+		body: JSON.stringify(formData),
+	})
+	.then(function(res) 
+	{
+		if (res.ok) 
+		{
+		return res.json();
+		}
+	})
+})
+
+
   
 
 
