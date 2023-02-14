@@ -218,7 +218,7 @@ document.querySelectorAll('.modal-wrapper').forEach(function(wrapper) {
 	console. Error(error);
   });
   */
-const addPhoto = document.querySelector('#addPhoto');
+const addPhoto = document.querySelector('#modalphoto');
 addPhoto.addEventListener('submit', (e) => {
 	e.preventDefault();
 	const formData = new FormData();
@@ -229,6 +229,8 @@ addPhoto.addEventListener('submit', (e) => {
 	formData.append('imageUrl', image);
 	formData.append('title', title);
 	formData.append('categoryId', category);
+	//const addmodalphoto = document.querySelector('.addmodalphoto');
+	//addmodalphoto.innerHTML = '';
 	
 	fetch('http://localhost:5678/api/works/',{
 		method: 'POST',
@@ -244,7 +246,19 @@ addPhoto.addEventListener('submit', (e) => {
 	})
 })
 
-
+const logout = document.querySelector('ul li:nth-child(4)')
+logout.addEventListener('click', function() {
+	localStorage.clear('access_token')
+    localStorage.clear('userId')
+	token === 0
+	userId === 0
+	document.querySelectorAll('.admin').forEach(item => {
+		item.classList.add('hide-admin')
+	});
+	document.querySelectorAll('.not-hide').forEach(item => {
+		item.classList.remove('hide-admin')	
+	});
+})
   
 
 
