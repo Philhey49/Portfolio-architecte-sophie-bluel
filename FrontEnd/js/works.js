@@ -44,10 +44,12 @@ fetch('http://localhost:5678/api/works')
 			actionOptions.classList.add('action-options');
 			actionOptions.innerHTML = `
 				<button class="action-item hover-action-item"><i class="fa-solid fa-arrows-up-down-left-right"></i></button>
-				<button class="action-item" id=${modalfigure.id}><i class="fa-regular fa-trash-can"></i></button>`;
-			actionOptions.addEventListener('click', e => {
+				<button class="action-item delete-item" id=${modalfigure.id}><i class="fa-regular fa-trash-can"></i></button>`;
+			actionOptions.addEventListener('click', (e) => {
+				//let deleteButton = e.target;
 					e.preventDefault()
-					document.getElementById(project.id).remove();
+					deleteWork(e)
+					//document.getElementById(project.id).remove();
 					  });
 			let modalfigcaption = document.createElement('figcaption');
 			modalimg.src = project.imageUrl;
@@ -187,37 +189,31 @@ document.querySelectorAll('.modal-wrapper').forEach(function(wrapper) {
 	})
 })
 
-//let itemId = modalfigure.target.dataset.itemId;
+function deleteWork(e) {
+	let idProject = parseInt(e.target.id)
+	let deleteButton = e.target;
+	fetch(`http://localhost:5678/api/works/${idProject}`, {
+			method: 'DELETE',
+			headers: {'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${token}`
+			}
+		})
+		.then(function (result) {
+			if (result.ok) {
+				return result.json()
+			} else {
+				throw new Error(result.error)
+			}
+		})
+		.then(data => {
+			console.log(data)
+			deleteButton.closest('figure').remove()
 
-/*fetch('http://localhost:5678/api/works/',{
-	method: 'delete',
-	headers: {'Content-Type': 'application/json', 'Accept': '*//*', 'Authorization': 'Bearer ${token}'} ,
-	body: JSON.stringify({id : itemId})
-})
-.then(function(res) 
-{
-	if (res.ok) 
-	{
-	return res.json();
-	}
-	throw new Error('Erreur lors de la suppression de l\'élément');
-})
-.then(data => {
-	if (data.success) {
-	  // Supprimer l'élément du DOM
-		actionOptions.addEventListener('click', e => {
-		e.preventDefault()
-		document.getElementById('modalfigure' + itemId).remove();
-	  	})
-	} else {
-	  // Afficher une erreur
-	  alert('Erreur lors de la suppression de l\'élément');
-	}
-  })
-  .catch(error => {
-	console. Error(error);
-  });
-  */
+		})
+		.catch(err => console.log(err))
+}
+
 const addPhoto = document.querySelector('#modalphoto');
 addPhoto.addEventListener('submit', (e) => {
 	e.preventDefault();
