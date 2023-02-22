@@ -84,7 +84,7 @@ fetch('http://localhost:5678/api/categories')
 		// SELECT DES CATEGORIES
 		choices.forEach(function(cat) {
 		
-			document.querySelector('#popup-add-category').innerHTML += `<option data-cat="${cat.id}">${cat.name}</option>`
+			document.querySelector('#popup-add-category').innerHTML += `<option value="${cat.id}">${cat.name}</option>`
 
 		})
 
@@ -214,15 +214,15 @@ function deleteWork(e) {
 		.catch(err => console.log(err))
 }
 
-const addPhoto = document.querySelector('#modalphoto');
-addPhoto.addEventListener('submit', (e) => {
+const addPhoto = document.querySelector('#addbutton');
+addPhoto.addEventListener('click', (e) => {
 	e.preventDefault();
 	const formData = new FormData();
 	const image = document.querySelector('input[type="file"]').files[0];
-	const title = document.querySelector('input[name="title"]').textContent;
-	const category = document.querySelector('select[name="Categorie"]').categoryId;
+	const title = document.querySelector('input[name="title"]').value;
+	const category = document.querySelector('#popup-add-category').value;
 	
-	formData.append('imageUrl', image);
+	formData.append('image', image);
 	formData.append('title', title);
 	formData.append('categoryId', category);
 	//const addmodalphoto = document.querySelector('.addmodalphoto');
@@ -230,17 +230,23 @@ addPhoto.addEventListener('submit', (e) => {
 	
 	fetch('http://localhost:5678/api/works/',{
 		method: 'POST',
-		headers: {'Content-Type': 'multipart/form-data', 'Accept': 'application/json', 'Authorization': 'Bearer ${token}'},
-		body: JSON.stringify(formData),
+		headers: { 'Accept': 'application/json', 'Authorization': `Bearer ${token}`},
+		body: formData
 	})
 	.then(function(res) 
 	{
 		if (res.ok) 
 		{
-		return res.json();
+			alert("Projet enregistré");
+			return res.json();
 		}
 	})
-})
+	.then(data => {
+		console.log(data)
+		gallery.closest('figure').add()
+	})
+	.catch(err => console.log(err))
+});
 
 const logout = document.querySelector('ul li:nth-child(4)')
 logout.addEventListener('click', function() {
