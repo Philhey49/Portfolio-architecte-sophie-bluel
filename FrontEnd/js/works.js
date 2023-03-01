@@ -224,7 +224,7 @@ addPhoto.addEventListener('click', (e) => {
 	
 	formData.append('image', image);
 	formData.append('title', title);
-	formData.append('categoryId', category);
+	formData.append('category', category);
 	//const addmodalphoto = document.querySelector('.addmodalphoto');
 	//addmodalphoto.innerHTML = '';
 	
@@ -263,6 +263,15 @@ logout.addEventListener('click', function() {
 })
   
 
+// ECOUTE DU CHANGEMENT DE L'IMAGE
+let addImageInput = document.querySelector('#add-photo-input')
+
+addImageInput.addEventListener('change', () => {
+	const image = addImageInput.files[0]
+	const imageUrl = URL.createObjectURL(image)
+	
+	document.querySelector('#add-image-preview').innerHTML = `<img src="${imageUrl}" />`
+})
 
 
 
