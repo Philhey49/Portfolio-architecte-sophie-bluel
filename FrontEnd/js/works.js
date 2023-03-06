@@ -200,16 +200,16 @@ function deleteWork(e) {
 			}
 		})
 		.then(function (result) {
-			if (result.ok) {
+			if (result.status === 200) {
 				return result.json()
 			} else {
+				console.log(result.status)
 				throw new Error(result.error)
 			}
 		})
 		.then(data => {
 			console.log(data)
 			deleteButton.closest('figure').remove()
-
 		})
 		.catch(err => console.log(err))
 }
@@ -225,8 +225,6 @@ addPhoto.addEventListener('click', (e) => {
 	formData.append('image', image);
 	formData.append('title', title);
 	formData.append('category', category);
-	//const addmodalphoto = document.querySelector('.addmodalphoto');
-	//addmodalphoto.innerHTML = '';
 	
 	fetch('http://localhost:5678/api/works/',{
 		method: 'POST',
