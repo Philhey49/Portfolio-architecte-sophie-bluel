@@ -235,11 +235,11 @@ addPhoto.addEventListener('click', (e) => {
 	{
 		if (res.ok) 
 		{
-			alert("Projet enregistré");
 			return res.json();
 		}
 	})
 	.then(data => {
+		alert("Projet enregistré");
 		console.log(data)
 		gallery.closest('figure').add()
 	})
@@ -269,6 +269,9 @@ addImageInput.addEventListener('change', () => {
 	const imageUrl = URL.createObjectURL(image)
 	
 	document.querySelector('#add-image-preview').innerHTML = `<img src="${imageUrl}" />`
+	document.querySelectorAll('span').forEach(item => {
+		item.hidden = "true"
+	})
 })
 
 
