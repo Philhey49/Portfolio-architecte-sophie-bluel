@@ -539,6 +539,18 @@ button[type="submit"]{
 }
 
 #add-image-preview img {
-	max-width: 80%;
+	max-width: 100%;
 	z-index: 2;
+
+}
+#addWorkForm{
+	width: 100%;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.validateAddButton {
+	background-color: #1D6154 !important;
 }

@@ -25,7 +25,7 @@
 			<li><a href="#projects">projets</a></li>
 			<li><a href="#contact">contact</a></li>
 			<li><a href="/FrontEnd/login.html" class="not-hide">login</a></li>
-			<li><a href="/FrontEnd/" class="admin hide-admin">logout</a></li>
+			<li><a href="/FrontEnd/index.html" class="admin hide-admin">logout</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -95,20 +95,22 @@
 				<div class="js-modal-close"><i class="fa-solid fa-close"></i></div>
 			</nav>
 			<h3>Ajout Photo</h3>
-			<label for="add-photo-input" class="addmodalphoto" id="modalphoto">
-				<!--<i class="fa-solid fa-image-landscape"></i>-->
-				<div class="landscape" id="add-image-preview"><i class="fa-solid fa-image"></i></div>
-				<span id="buttonAdd">+ Ajouter photo</span>
-				<span>jpg, png : 4mo max</span>
-			</label>
-			<input id="add-photo-input" type="file" hidden>
-			<div class="titlecat">
-				<label for="title">Titre</label>
-				<input type="text" name="title" id="title">
-				<label for="Categorie">Catégorie</label>
-				<select id="popup-add-category"></select>
-			</div>
-			<button type="submit" id="addbutton">Valider</button>
+			<form id="addWorkForm">
+				<label for="add-photo-input" class="addmodalphoto" id="modalphoto">
+					<!--<i class="fa-solid fa-image-landscape"></i>-->
+					<div class="landscape" id="add-image-preview"><i class="fa-solid fa-image"></i></div>
+					<span id="buttonAdd">+ Ajouter photo</span>
+					<span>jpg, png : 4mo max</span>
+				</label>
+				<input id="add-photo-input" type="file" hidden>
+				<div class="titlecat">
+					<label for="title">Titre</label>
+					<input type="text" name="title" id="title">
+					<label for="Categorie">Catégorie</label>
+					<select id="popup-add-category"></select>
+				</div>
+				<button type="submit" id="addbutton">Valider</button>
+			</form>
 		</article>
 	</div>
 </aside>
