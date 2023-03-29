@@ -16,7 +16,7 @@ document.querySelector('#login-button').addEventListener('click', function() {
     .then(res => res.json())
     .then(data => { 
         
-        if(data.error) {
+        if(data.message || data.error) {
             document.querySelector('#error-message').textContent = "Erreur dans l`identifiant ou le mot de passe"
         } else {
             localStorage.setItem('access_token', data.token)
